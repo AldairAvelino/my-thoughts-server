@@ -9,7 +9,7 @@ server.use(middlewares)
 
 server.use(jsonServer.rewriter({
     '/api/*': '/$1',
-    '/pensamento*': '/$1'
+    '/pensamento/*': '/$1'
 }))
 
 server.use(router)
