@@ -2,9 +2,9 @@
   "name": "my-thoughts-server",
   "version": "1.0.0",
   "description": "my-thoughts-server",
-  "main": "server.js",
+  "main": "api/server.js",
   "scripts": {
-    "start": "json-server --watch database.json --port 3000"
+    "start": "node api/server.js --watch"
   },
   "keywords": [],
   "author": "",
