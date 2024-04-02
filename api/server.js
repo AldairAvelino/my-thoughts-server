@@ -7,11 +7,6 @@ const PORT = process.env.PORT || 3000
 
 server.use(middlewares)
 
-server.use(jsonServer.rewriter({
-    '/api/*': '/$1',
-    '/pensamento/*': '/$1'
-}))
-
 server.use(router)
 
 server.listen(PORT, () => {
