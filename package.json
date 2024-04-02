@@ -2,7 +2,7 @@
   "name": "my-thoughts-server",
   "version": "1.0.0",
   "description": "my-thoughts-server",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "json-server --watch database.json --port 3000"
   },
