@@ -1,8 +1,8 @@
 {
-  "name": "my-thoughts-server",
+  "name": "server",
   "version": "1.0.0",
-  "description": "my-thoughts-server",
-  "main": "api/server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "start": "node api/server.js --watch"
   },
@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^0.17.4"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase-admin": "^12.0.0"
   }
 }
