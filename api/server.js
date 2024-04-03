@@ -27,7 +27,6 @@ admin.initializeApp({
 const app = express();
 
 app.use(express.json()); // Para usar req.body em POST
-app.use(express.static(path.join(__dirname, 'public'))); // Servir arquivos estáticos na pasta 'public'
 
 // Rota GET para obter todos os pensamentos
 app.get('/pensamentos', async (req, res) => {
@@ -105,7 +104,7 @@ app.delete('/pensamentos/:id', async (req, res) => {
 
 // Rota GET para exibir a página inicial
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.listen(PORT, () => {
