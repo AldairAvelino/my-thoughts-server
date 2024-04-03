@@ -2,6 +2,8 @@ const express = require('express');
 const admin = require('firebase-admin');
 const path = require('path');
 require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
+const cors = require('cors'); // Importe o pacote cors
+
 
 const serviceAccountKey = {
   "type": process.env.TYPE,
@@ -27,6 +29,7 @@ admin.initializeApp({
 const app = express();
 
 app.use(express.json()); // Para usar req.body em POST
+app.use(cors()); // Use o middleware cors
 
 // Rota GET para obter todos os pensamentos
 app.get('/pensamentos', async (req, res) => {
