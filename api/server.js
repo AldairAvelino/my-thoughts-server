@@ -1,5 +1,6 @@
 const express = require('express');
-const admin = require('firebase-admin');
+const admin = require('firebase-admin')
+const path = require('path')
 require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
 
 const serviceAccountKey = {
@@ -26,6 +27,11 @@ admin.initializeApp({
 const app = express();
 
 app.use(express.json()); // Para usar req.body em POST
+
+// Rota GET para exibir a página inicial
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './../public/index.html'));
+});
 
 // Rota GET para obter todos os pensamentos
 app.get('/pensamentos', async (req, res) => {

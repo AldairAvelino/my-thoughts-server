@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Documentação da API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        pre code {
+            display: block;
+            white-space: pre;
+            color: #333;
+        }
+
+        .json-key,
+        a {
+            color: #008000c9;
+            font-weight: bold;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        .json-string {
+            color: #0000ffbe;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Documentação da API</h1>
+    <p>Esta é a documentação da sua API, que contém informações sobre os endpoints disponíveis e exemplos de
+        requisições.</p>
+
+    <h2>Endpoints Disponíveis</h2>
+    <ul>
+        <li>
+            <strong>GET /pensamentos</strong>: Retorna todos os pensamentos cadastrados.
+            <p><em>Exemplo de requisição:</em> <code><a href="https://my-thoughts-server.vercel.app/pensamentos" target="_blank">GET /pensamentos</a></code></p>
+            <p><em>Exemplo de resposta:</em></p>
+            <pre>
+        <code>
+{
+  <span class="json-key">"pensamentos"</span>: [
+    {
+      <span class="json-key">"id"</span>: <span class="json-string">"1"</span>,
+      <span class="json-key">"texto"</span>: <span class="json-string">"Conteúdo do pensamento 1"</span>,
+      <span class="json-key">"autor"</span>: <span class="json-string">"Autor 1"</span>
+    },
+    {
+      <span class="json-key">"id"</span>: <span class="json-string">"2"</span>,
+      <span class="json-key">"texto"</span>: <span class="json-string">"Conteúdo do pensamento 2"</span>,
+      <span class="json-key">"autor"</span>: <span class="json-string">"Autor 2"</span>
+    }
+  ]
+}
+        </code>
+      </pre>
+        </li>
+        <li>
+            <strong>POST /pensamentos</strong>: Cria um novo pensamento.
+            <p><em>Exemplo de requisição:</em></p>
+            <pre>
+        <code>
+POST /pensamentos
+Content-Type: application/json
+
+{
+  <span class="json-key">"texto"</span>: <span class="json-string">"Conteúdo do pensamento"</span>,
+  <span class="json-key">"autor"</span>: <span class="json-string">"Autor do pensamento"</span>
+}
+        </code>
+      </pre>
+            <p><em>Exemplo de resposta:</em></p>
+            <pre>
+        <code>
+{
+  <span class="json-key">"id"</span>: <span class="json-string">"123"</span>,
+  <span class="json-key">"texto"</span>: <span class="json-string">"Conteúdo do pensamento"</span>,
+  <span class="json-key">"autor"</span>: <span class="json-string">"Autor do pensamento"</span>
+}
+        </code>
+      </pre>
+        </li>
+        <li>
+            <strong>GET /pensamentos/:id</strong>: Retorna um único pensamento pelo ID.
+            <p><em>Exemplo de requisição:</em> <code>GET /pensamentos/123</code></p>
+            <p><em>Exemplo de resposta:</em></p>
+            <pre>
+        <code>
+{
+  <span class="json-key">"id"</span>: <span class="json-string">"123"</span>,
+  <span class="json-key">"texto"</span>: <span class="json-string">"Conteúdo do pensamento"</span>,
+  <span class="json-key">"autor"</span>: <span class="json-string">"Autor do pensamento"</span>
+}
+        </code>
+      </pre>
+        </li>
+        <li>
+            <strong>PUT /pensamentos/:id</strong>: Atualiza um pensamento existente pelo ID.
+            <p><em>Exemplo de requisição:</em></p>
+            <pre>
+        <code>
+PUT /pensamentos/123
+Content-Type: application/json
+
+{
+  <span class="json-key">"texto"</span>: <span class="json-string">"Novo conteúdo do pensamento"</span>,
+  <span class="json-key">"autor"</span>: <span class="json-string">"Novo autor do pensamento"</span>
+}
+        </code>
+      </pre>
+            <p><em>Exemplo de resposta:</em></p>
+            <pre>
+        <code>
+{
+  <span class="json-key">"id"</span>: <span class="json-string">"123"</span>,
+  <span class="json-key">"texto"</span>: <span class="json-string">"Novo conteúdo do pensamento"</span>,
+  <span class="json-key">"autor"</span>: <span class="json-string">"Novo autor do pensamento"</span>
+}
+        </code>
+      </pre>
+        </li>
+        <li>
+            <strong>DELETE /pensamentos/:id</strong>: Remove um pensamento pelo ID.
+            <p><em>Exemplo de requisição:</em> <code>DELETE /pensamentos/123</code></p>
+            <p><em>Exemplo de resposta:</em></p>
+            <pre>
+        <code>
+{
+  <span class="json-key">"message"</span>: <span class="json-string">"Pensamento removido com sucesso"</span>
+}
+        </code>
+      </pre>
+        </li>
+    </ul>
+</body>
+
+</html>
