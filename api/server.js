@@ -4,7 +4,6 @@ const path = require('path');
 require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
 const cors = require('cors'); // Importe o pacote cors
 
-
 const serviceAccountKey = {
   "type": process.env.TYPE,
   "project_id": process.env.PROJECT_ID,
@@ -38,8 +37,11 @@ app.get('/pensamentos', async (req, res) => {
     const pensamentosRef = db.ref('pensamentos');
     const snapshot = await pensamentosRef.once('value');
     const pensamentos = snapshot.val();
-    const pensamentoArray = Object.keys(pensamentos).map(key => ({ id: key, ...pensamentos[key] }));
-    res.json({ pensamento: pensamentoArray });
+    const pensamentoArray = Object.keys(pensamentos).map(key => ({
+      id: parseInt(key), // Convertendo para número inteiro
+      ...pensamentos[key]
+    }));
+    res.json(pensamentoArray); // Retornando a array diretamente, sem objeto adicional
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -54,7 +56,7 @@ app.post('/pensamentos', async (req, res) => {
     const id = pensamentosRef.push().key;
     novoPensamento.id = id;
     await pensamentosRef.child(id).set(novoPensamento);
-    res.json({ pensamento: novoPensamento });
+    res.json(novoPensamento);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -72,7 +74,7 @@ app.get('/pensamentos/:id', async (req, res) => {
       res.status(404).json({ message: 'Pensamento não encontrado' });
       return;
     }
-    res.json({ pensamento });
+    res.json(pensamento);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -86,7 +88,7 @@ app.put('/pensamentos/:id', async (req, res) => {
     const id = req.params.id;
     const pensamentoAtualizado = req.body;
     await pensamentosRef.child(id).update(pensamentoAtualizado);
-    res.json({ pensamento: pensamentoAtualizado });
+    res.json(pensamentoAtualizado);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
